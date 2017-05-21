@@ -13,7 +13,7 @@ io.on('connection', socket => {
   console.log("Client has connected!")
   socket.on('message', data => {
     console.log("New message!")
-    io.clients.forEach(function each(client) {
+    io.clients.forEach( client => {
       if (client !== socket && client.readyState === WebSocket.OPEN) {
         client.send(data);
       }
