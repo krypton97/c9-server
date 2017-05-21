@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hub</title>
+    <link rel="stylesheet" href="/style.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" type="text/css" />
+</head>
+<body>
+    <button class="ui green button" id="led">Turn ON the LED</button>
+    <h1></h1>
+</body>
+<script type="text/javascript">
+    const socket = new WebSocket("wss://raspberry-alexcnu.c9users.io")
+    socket.onopen = () => console.log("Connected WS!")
+    
+    document.querySelector(".button").addEventListener('click', e => {
+        let mode = (e.target.innerHTML == "Turn ON the LED");
+        e.target.innerHTML = mode ? "Turn OFF the LED" : "Turn ON the LED";
+        document.querySelector('h1').innerHTML = mode ? "You turned on the light" : "You turned off the light"
+        socket.send((mode ? 1 : 0))
+    })
+</script>
+</html>

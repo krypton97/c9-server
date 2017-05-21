@@ -1,0 +1,11 @@
+#led {
+    position: absolute;
+    margin-left: Calc(100vw/2 - 100px);
+    margin-top: Calc(100vh/2 - 100px);    
+}
+
+body > h1 {
+    position: absolute;
+    margin-left: Calc(100vw/2 - 170px);
+    margin-top: Calc(100vh/2 - 200px); 
+}
